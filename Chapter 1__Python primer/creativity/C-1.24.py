@@ -1,3 +1,5 @@
+#Write a short Python function that counts the number of vowels in a given character string.
+
 def vowel_counter(s):
     s= s.lower()
     count=0

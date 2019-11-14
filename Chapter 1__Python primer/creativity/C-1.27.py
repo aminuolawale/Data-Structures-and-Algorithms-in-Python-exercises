@@ -1,3 +1,8 @@
+#In Section 1.8, we provided three different implementations of a generator that computes factors of a given integer. 
+# The third of those implementations, from page 41, was the most efﬁcient, but we noted that it did not yield the factors 
+# nincreasing order. Modifythegeneratorsothatitreports factors in increasing order, while maintaining its general 
+# performance advantages
+
 def factors(n):
     k=1
     p = None
