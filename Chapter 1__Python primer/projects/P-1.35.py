@@ -1,12 +1,12 @@
-#Write a Python program that inputs a list of words, separated by whitespace, and outputs how many times 
-# each word appears in the list. You need not worry about efﬁciency at this point, however, as this topic 
-# is something that will be addressed later in this book.
+#The birthday paradox says that the probability that two people in a room will have the same birthday is more than half, 
+# provided n, the number of people in the room, is more than 23. This property is not really a paradox, but many people 
+# ﬁnd it surprising. Design a Python program that can test this paradox by a series of experiments on randomly generated 
+# birthdays, which test this paradox for n = 5,10,15,20,...,100.
 
-words = input('Enter words:\n')
-words=words.split(' ')
-word_list = set(words)
-word_count={}
-for word in word_list:
-    word_count[word]=words.count(word)
+def birthday_paradox(n):
+    prob = 1
+    for i in range (0,n):
+        prob*=(365-i)/365
+    return 1-prob
 
-print(word_count)
+print(birthday_paradox(22))

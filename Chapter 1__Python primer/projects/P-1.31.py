@@ -7,7 +7,8 @@
 denominations={'one_thousand':1000,'five_hundred':500, 'two_hundred':200, 'hundred':100, 
                 'fifty':50,'twenty':20, 'ten':10,'five':5 }
 
-def is_valid_cash(cash):
+#function to check if given cash can be made from available denominations
+def valid_cash(cash):
     i = 0
     while cash >= denominations['five']:
         current_denomination =  denominations[list(denominations.keys())[i]]
@@ -18,7 +19,7 @@ def is_valid_cash(cash):
     return True if cash == 0 else False
 
 def make_change(charge, cash):
-    if not is_valid_cash(charge) or not is_valid_cash(cash):
+    if not valid_cash(charge) or not valid_cash(cash):
         print('invalid amount given available denominatons')
         return None
     balance = cash - charge
@@ -48,7 +49,7 @@ def make_change(charge, cash):
     return result
 
 def make_change_gen(charge, cash):
-    if not is_valid_cash(charge) or not is_valid_cash(cash):
+    if not valid_cash(charge) or not valid_cash(cash):
         print('invalid amount given available denominatons')
         return None
     balance = cash - charge

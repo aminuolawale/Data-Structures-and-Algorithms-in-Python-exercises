@@ -8,8 +8,7 @@ from random import randint
 def my_shuffle(original_list):
     shuffled_list = []
     while len(shuffled_list) < len(original_list):
-        is_distinct = False
-        while not is_distinct:
+        while True:
             randomly_chosen = original_list[randint(0,len(original_list)-1)]
             if randomly_chosen in shuffled_list:
                 randomly_chosen = original_list[randint(0,len(original_list)-1)]

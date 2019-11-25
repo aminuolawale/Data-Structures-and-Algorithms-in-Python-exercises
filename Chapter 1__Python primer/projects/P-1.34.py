@@ -9,8 +9,8 @@ text= 'I will never spam my friends again'
 def line_generator(n):
     for _ in range(0,n):
         text_list = list(text)
-        should_error = randrange(0,2)
-        if should_error:
+        there_should_be_error = randrange(0,2)
+        if there_should_be_error:
             while True:
                 error_position = randrange(0, len(text_list))
                 if text_list[error_position] != ' ':

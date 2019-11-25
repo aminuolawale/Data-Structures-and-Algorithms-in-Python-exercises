@@ -9,7 +9,7 @@ def minmax(data):
             smallest = entry
         if largest < entry:
             largest = entry
-    return [smallest, largest]
+    return (smallest, largest)
 
 
 print(minmax([3,4,5,6,2,1,3,98,4,5,5,5,2,1,1,-1000]))
