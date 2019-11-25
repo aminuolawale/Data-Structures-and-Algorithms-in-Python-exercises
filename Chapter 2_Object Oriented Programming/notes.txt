@@ -1,0 +1,160 @@
+Three major steps in software development
+1. Design
+2. Implementation
+3. Testing and Debugging
+
+Tool for design - Class Responsibility collaborator cards
+		- Unified modelling language
+----------------------------------------
+CreditCard Class
+props: customer, bank, accnt, limit
+methods: get_customer,get_bank,get_account, get_limit, get_balance, charge
+	make_payment
+-----------------------------------------
+Implemented credit card class
+-----------------------------------------
+implemented vector class
+Iterators
+Iterators in python must define an init, next and iter dunder methods(TODO)__DONE
+I must implement my own iterator
+-----------------------------------------
+Example: A range Class (TODO)__DONE	
+The constructor takes start, stop and step. Default values of stop is None
+and step is 1.
+raise exception if step is 0
+if stop is none swap start for stop
+calculate length and give it to the length property
+set the start and stop property-----all this in the constructor
+implement len and getitem and also raise exception for IndexError
+-----------------------------------------
+Inheritance
+Extending the creditcard class
+Inside a derived class the constructor can, if necessary call the Base 
+constuctor via super()__init__ and then initialize its own variables
+-----------------------------------------
+-----Implementing the PredatoryCreditCard class(TODO)-----
+-define constructor
+-use base constructor
+-initialize own variable
+-define charge(which overrides Base charge)
+	here we use the Base charge to check if the charge was successful. if not
+	we charge the card 5 dolls and return failure or success. Now if it was a 
+	success, the call to the Base charge would indicate it. Likewise if it was
+a failure. So we can just pass the rv of the Base charge as rv of this
+-define process_month
+ if the balance is still positive, increase the balance by the monthly APR
+factor
+####Note when implementing the above class########
+ The most challenging aspect in implementing this method is making sure 
+we have working knowledge of how an annual percentage rate translates to 
+a monthly rate. We do not simply divide the annual rate by twelve to get 
+a monthly rate (that would be too predatory, as it would result in a 
+higher APR than advertised). The correct computation is to take the 
+twelfth-root of 1 + self.apr, and use that as a multiplicative factor. 
+#####
+-----------------------------------------
+Protected Members
+Formal access control
+_protected_attribute
+__private_attribute
+Notes: in implementing the apr, an attribute defined by Base was modified by
+Derived. This is because it was a protected attribute. We could define a protected
+method that allows modification of this attr instead of modifying it directly
+
+-----------------------------------------
+Progression class (TODO)__DONE
+Implementing it
+- constructor initializes attr current to params start =0 an
+- protected advance method defines the logic of the progression. 
+- the dunder next method raises a stopiter exception when current value is
+None else it returns the current value and advances
+- iter returns self
+- method print progression just prints n terms of the progression
+-----------------------------------------
+Arithmetic Progression class (TODO)
+- define constructor with new params increment and start. Inside call the
+Base constructor and initialize the increment attr.
+- redefine _advance
+-----------------------------------------
+Geometric progression (TODO)
+-constructor takes base and start. Do the needful
+- redefine advance
+-----------------------------------------
+Fibonacci Expression (TODO)
+--constructor takes first 0 and second 1, calls Base constructor and sets a new
+attr prev to second - first
+- advance sets prev to current and current to sum of prev and current 
+-----------------------------------------
+Now we test our progressions
+-----------------------------------------
+
+Abstract base classes
+Sometimes a base class will never be implemented. It was just created to
+define certain fundamental behaviour for all the classes we wish to derive from
+it
+-Template method pattern: This is when an abstract class provides behaviour
+that rely on calls to other abstract methods
+
+Now in the python collections module there is an abstract class Sequence
+Sequence provides concrete behaviours common to list, str, tuple etc.
+Now we implement such a class
+
+-we import ABCMeta and abstractmethod from abc
+we create a class Sequence off of ABCMeta as a metaclass
+we define the following as abstract methods and leave them empty
+__len__
+__getitiem__
+and the following normal methods
+__contains__
+index
+count
+Why are len and getitem empty?
+I think they are just defined there to tell the derived classes that they would 
+have to implement those methods
+Metaclasses(Must lookup).
+Now any derived class that doesnt implement the abstract methods would be 
+disallowed.
+In essence, if we know some abstract class whose concrete behavours we want
+we can simply build our class off it
+
+-----------------------------------------
+Namespaces and Object-orientation
+variables to be used in all instances of a class should be stored on the
+class itself
+You can define a class within a class
+-----------------------------------------!!!!!!!!!!
+Dictionaries and the __slots__ declarations (REREAD) pg. 99
+
+-----------------------------------------
+Name resolution and dynamic dispatch
+when a method is called on an object, the python interpreter begins a name
+resolution process
+1. the instance namespace is searched. that is, the namespace containing
+all objects that are particular to that object. If found it is used, if not 
+then step 2
+2. the class namespace is searched. This is the namespace containing all
+objects particular to the class and shared by all instance of the class. If 
+found it is used, if not then step 3
+3. The direct ancestor class is searched. the search continues up the ancestor
+chain till a match is found
+4. If not then an attribute error is raised
+More concretely, the parameters passed to the constructor would go in the 
+instance namespace while the methods would go in the class namespace
+
+Dynamic dispatch. Python determines at runtime what version of an overriden 
+variable to use with an object
+
+-----------------------------------------
+Shallow copying and deep copying
+list_a = list_b = original_list
+list_a and list_b are the same list. any modification to original_list will
+reflect in them
+To avoid this, we use a deep copy from pythons copy module
+copy.deepcopy
+
+++++++++++++++++++++++++++++++++++++++++++++
+prompts from this chapter
+1. create a script to automatically set up folders for each chapter including
+the files
+leftovers
+1. Dictionaries and __slots__ declaration. Must reread
