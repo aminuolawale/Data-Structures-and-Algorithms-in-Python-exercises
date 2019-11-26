@@ -1,0 +1,17 @@
+Table of contents
+
+1. Python Primer                |001-051| Started reading on -/-/19
+2. Object-Oriented Programming  |056-103| Started reading on 25/11/19
+3. Algorithm Analysis		|109-141|
+4. Recursion		        |148-180|
+5. Array based sequences        |183-224|
+6. Stacks queues and deques     |228-250|
+7. Linked Lists                 |255-294|
+8. Trees                        |299-352|
+9. Priority queues              |362-395|
+10. Maps, HashTables,SkipLists  |401-452|
+11. Search Trees                |459-528|
+12. Sorting and selection       |536-574|
+13. Text Processing             |581-613|
+14. Graph Algorithms            |619-686|
+15. Memory Management, B-trees  |697-717|
