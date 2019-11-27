@@ -164,3 +164,7 @@ prompts from this chapter
 the files
 leftovers
 1. Dictionaries and __slots__ declaration. Must reread
+
++++++++++++++++++++++++++++++++++++++++++++++
+Not solved R-2.3
+Not solved R-2.17
