@@ -11,4 +11,3 @@ class MyIterator:
         return self.seq[self.index]
     def __iter__(self):
         return(self)
-``
