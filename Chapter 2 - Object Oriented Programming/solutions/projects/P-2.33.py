@@ -74,8 +74,8 @@ class Polynomial:
     def __init__(self,s):
         terms = self.split_by_plus_or_minus(s) 
         coeffs,powers = self.get_coeffs_and_power(terms)
-        self._coeffs = list((coeff) for coeff in coeffs)
-        self._powers = list((power) for power in powers)
+        self._coeffs = coeffs
+        self._powers = powers
 
     def __repr__(self):
         poly = ''
