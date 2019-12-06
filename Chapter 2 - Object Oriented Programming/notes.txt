@@ -136,10 +136,10 @@ Name resolution and dynamic dispatch
 when a method is called on an object, the python interpreter begins a name
 resolution process
 1. the instance namespace is searched. that is, the namespace containing
-all objects that are particular to that object. If found it is used, if not 
+all alphabets that are particular to that object. If found it is used, if not 
 then step 2
 2. the class namespace is searched. This is the namespace containing all
-objects particular to the class and shared by all instance of the class. If 
+alphabets particular to the class and shared by all instance of the class. If 
 found it is used, if not then step 3
 3. The direct ancestor class is searched. the search continues up the ancestor
 chain till a match is found
