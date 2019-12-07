@@ -3,7 +3,10 @@
 # create a new instance of that type of animal if they are of different genders. Otherwise, if two animals of the same 
 # type and gender try to collide, then only the one of larger strength survives.
 
-# create a 2 dimensional version of this with more complex behaviour
+# create a 2 dimensional version of this with more complex behaviour:
+#   Fish will avoid bears and will seek fish of other genders
+#   Stronger Fish of same gender will seek other fish of same gender to bully and kill. Samw with bears. Bears will do it with more frequency
+# remove 419 part check for redundancies
 
 from random import choice, randrange
 import time
@@ -66,29 +69,33 @@ class Ecosystem:
         directions ={ 'right': 1, 'left': -1, 'stay': 0 }
         if creature is None:
             return
-        # choose direction
+
+        # Choose direction:
+        # at the leftmost end of river, creature can only move right or remain in position
         if self.river.index(creature) == 0:
             direction = choice(['right', 'stay'])
-
+        # at the rightmost end of river, creature can only move left or remain in position
         elif self.river.index(creature) == len(self.river)-1:
             direction = choice(['left', 'stay'])
-
+        # elsewhere 
         else:
             direction = choice(['left', 'right', 'stay'])
 
         current_position = self.river.index(creature)
         next_position = self.river.index(creature)+directions[direction]
         other_creature = self.river[next_position]
-
+        # if creature remains in position
         if next_position == current_position:
             print('{} remains at {}'.format(creature, current_position))
+            # e.g Bear remains at 5
             return
-        
+        # if there is no creature in planned direction of motion
         elif creature and other_creature is None:
             self.river[next_position],self.river[current_position]  = creature, None
             print('{} moves from {} to {}'.format(creature,current_position, next_position))
+            # e.g fish moves from 4 to 5
             return
-        # if creatures are of the same type
+        # if there is a creature in planned direction and it is of same type with current creature
         elif type(creature) == type(other_creature) and type(creature) != type(None):
             # if same gender
             if creature.gender == other_creature.gender:
@@ -110,7 +117,7 @@ class Ecosystem:
                         self.fish_ids.pop(self.fish_ids.index(creature.id))
                     print('{} collides with {} at {} and dies'.format(creature, other_creature, next_position))
                     return
-                # they attacker recoils
+                # the attacker recoils if they are of equal strength
                 else:
                     print('{} collides with {} at {} and bounces back to {}'.format(creature, other_creature, next_position, current_position))
                     return
@@ -120,32 +127,36 @@ class Ecosystem:
                 mother = other_creature
                 birth_position = self._index_of_nearest_None()
                 if birth_position:
+                    # if parents are bears birth bear
                     if type(creature) == type(Bear()):
                         new_born = Bear()
                         self.river[birth_position] = new_born
                         self.bear_ids.append(new_born.id)
+                    # if parents are fish birth fish
                     elif type(creature) == type(Fish()):
                         new_born = Fish()
                         self.river[birth_position] = new_born
                         self.fish_ids.append(new_born.id)
                     print('{} and {} meet at {} to give birth to {} at {}'.format(father, mother, next_position, new_born, birth_position))
-        # if creatures are not of the same type
+        # if creatures are not of the same type then one is a fish and other is a bear and this results in death of fish
         else:
+            # if current creature is a bear, its set to the eater
             if type(creature) == type(Bear()):
                 eater = creature
                 food = other_creature
                 print('{} moves from {} to {} and eats {}'.format(eater,current_position, next_position, food))
-                if food.id == 419:
-                    print('dem don catch you')
+            # if current creature is fish then the other creature is the bear and therefore eater
             elif type(creature) == type(Fish()):
                 eater = other_creature
                 food = creature
                 print('{} moves from {} to {} and is eaten by {}'.format(food, current_position, next_position, eater))
-                if food.id == 419:
-                    print('dem don catch you')
+            # food goes into  bear's stomach
             eater.stomach.append(food)
+            # bear is not more hungry so we reset the time it has gone on hungry
             eater.hunger_period = 0
+            # fish is dead so delete its id
             self.fish_ids.pop(self.fish_ids.index(food.id))
+            # fish position becomes empty. Planned direction of motion will always contain the bear after eating
             self.river[current_position] = None
             self.river[next_position] = eater
     def no_more_fish(self):

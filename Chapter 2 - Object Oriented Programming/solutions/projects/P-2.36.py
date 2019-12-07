@@ -1,7 +1,7 @@
 #Write a Python program to simulate an ecosystem containing two types of creatures, bears and ﬁsh. The ecosystem consists of a river, which is 
 # modeled as a relatively large list. Each element of the list should be a Bear object, a Fish object, or None. In each time step, based on a 
 # random process, each animal either attempts to move into an adjacent list location or stay where it is. If two animals of the same type are 
-# about to collide in the samecell, then they stay where they are, but they create a new instance of that type of animal, which is placed in a 
+# about to collide in the same cell, then they stay where they are, but they create a new instance of that type of animal, which is placed in a 
 # random empty (i.e., previously None) location in the list. If a bear and a ﬁsh collide, however, then the ﬁsh dies (i.e., it disappears)
 
 # My additions:
@@ -46,9 +46,9 @@ class Ecosystem:
             else:
                 self.river.append(None)
     def _index_of_nearest_None(self):
-        for creature in self.river:
+        for index,creature in enumerate(self.river):
             if creature == None:
-                return self.river.index(creature)
+                return index
     def get_fish(self,id):
         for creature in self.river:
             if creature and creature.id == id:
@@ -74,7 +74,7 @@ class Ecosystem:
         elif creature and self.river[next_position] is None:
             self.river[next_position],self.river[current_position]  = creature, None
             print('{} moves from {} to {}'.format(creature,current_position, next_position))
-        elif type(creature) == type(self.river[next_position]) != type(None):
+        elif type(creature) == type(self.river[next_position]) and type(creature)!= type(None):
             father = creature
             mother = self.river[next_position]
             birth_position = self._index_of_nearest_None()

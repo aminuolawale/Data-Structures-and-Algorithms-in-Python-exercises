@@ -1,0 +1,185 @@
+------------------------------------
+Algorithm Analysis
+------------------------------------
+A data structure is a systematic way of orgainizing and accessing data.
+An Algorithm is a step by step procedure of acheiving a specific result in a
+finite amount of time.
+The analysis tools for Algorithms are basically the running times and the
+memory usage. Running time is a good measure of goodness of an Algorithm
+because speed comes directly after accuracy (and a fundamental property of
+Algorithms is correctness). Normally, running time has a positive correlation
+with size of input.
+
+------------------------------------
+Experimental Studies
+------------------------------------
+We can time Algorithms to test their speed. But this is a too simplistic
+approach that ignores such thing as the other processes that are running 
+on the system. We can also use the clock module to check the number of
+CPU cycles used but this too is a flawed approach. A more advanced method
+is the timeit method provided with Python
+
+------------------------------------
+Challenges of Experimental Analysis
+------------------------------------
+1. You cant run tests on all the possible sizes of inputs
+2. Comparison of two Algorithms must  be done in exactly the same environment
+    to avoid bias
+3. Algorithm must be fully implemented to be tested
+
+------------------------------------
+Counting Primitive Operations
+------------------------------------
+We basically count the number of basic operations like addition, assignment
+etc and ascribe a time t to them. We only need think of this t as a unit of
+time as it will be proportional to the running time of the primitive operation
+on any machine. 
+------------------------------------
+Focusing on the Worst-case input
+------------------------------------
+Since an Algorithm's running time might vary between inputs of the same size,
+we would very much like to specify the Algorithm's running time as the average
+running time for the different inputs of a specific size. But this would require
+some sophisticated propability analysis. Instead we just use the highest 
+running time i.e., the worst case scenario input
+_________________________
+//"That is, designing for the worst case leads to stronger algorithmic “muscles,” much like a track star who always practices by running up an incline.
+"//
+_________________________
+------------------------------------
+The seven functions
+------------------------------------
+1. The constant function:
+    f(n) = c
+    we define some fundamental g(n) = 1 so that f(n) = cg(n)
+2. The Logarithm function:
+    Log(n)
+    This function, usually in base 2, is very common beacuse several algorithms involve repeatedly
+    dividing an input in half. Because of its regular occurence it is written
+    as Log(n)
+3. The Linear function:
+    f(n) = n
+    This occurs for example if we are to perform an operation on each element
+    of an input
+4. The NLogN function:
+    f(n) = nlog(n)
+    Faster that n^2 but slower than n
+5. The Quadratic function:
+    f(n) = n^2
+    This occurs for example when we are comparing each member of an input
+    with another member of the input or if we have a nested loop
+    ------------------------------------
+    Nested loop and the quadratic function
+    ------------------------------------
+6. The cubic function and other Polynomials:
+    f(n) = n^3
+7. The Exponential function:
+    f(n) = b^n
+    eg. mutliplying two matrices
+
+------------------------------------
+Comparing Growth rates
+------------------------------------
+We'd want our data structure operations to run in constant or Logarithmic time
+while our Algorithm in Linear or nlogn time
+
+------------------------------------
+The ceiling and floor functions
+------------------------------------
+Notations for floor and ceiling
+
+------------------------------------
+Asymptotic analysis
+------------------------------------
+Here we just want to know the term that contributes the most to the growth of
+the Algorithm. We then say that the Algorithm grows proportionally to that term
+if we do some analysis and we realise the running time at nt +t then the
+Algorithm running time is proportional to n
+
+------------------------------------
+The 'Big-Oh' Notation
+------------------------------------
+We usually say f(n) is O(g(n)) if it is so
+
+------------------------------------
+Characterizing running times using the big-oh Notation
+------------------------------------
+ 
+------------------------------------
+Characterizing functions in simplest terms
+------------------------------------
+Characterize a function as simple as possible basically
+
+------------------------------------
+Big Omega
+------------------------------------
+This help us characterize a function as growing at a rate greater than or
+equal to another function
+n2 +3n is big omega of n2
+
+------------------------------------
+Big Theta
+------------------------------------
+f(n) is big theta of g(n) if f(n) is big o of g(n) and is also big omega of
+g(n)
+
+------------------------------------
+Comparative analysis
+------------------------------------
+basically comparing running times of different algorithms
+
+------------------------------------
+Some words of caution
+------------------------------------
+Be mindful of the terms we are hiding when using the Algorithmic Notations
+
+
+------------------------------------
+Exponential running times
+------------------------------------
+Distintion between efficient and inefficient algorithms
+Those that run in polynomial time and those that run in exponential time
+
+------------------------------------
+Examples of Algorithm Analysis
+------------------------------------
+Getting the length of a Python list and locating an item on the list takes
+constant time as each list instance carries with it information of the length
+and computer hardware supports constant time access of memory addresses
+
+------------------------------------
+Revisiting the problem of finding the maximum in a sequence
+------------------------------------
+It runs in linear time
+
+------------------------------------
+Further analysis of the maximum finding algorithm
+------------------------------------
+In the maximum finding algorithm, how many times might we update the current
+biggest value.
+We might update it once, twice or n times. What it the expected number of times?
+ = 1 + 1/2 + 1/3 + 1/4 + ... + 1/n
+ This is called the nth harmonic number and it is big o of log(n)
+
+------------------------------------
+Prefix averages
+------------------------------------
+Just basically the average of the first j terms in a sequence
+
+------------------------------------
+A quadratic time algorithm
+------------------------------------
+We had three functions two of which ran in quadratic time while the last in linear 
+time
+------------------------------------
+Three way set disjointedness
+------------------------------------
+
+Provided two different algorithms for solving this. One of big o n^3 and the other of
+big o n^2. I however wrote a big o n algorithm. I suspected this was not included so it
+will be used as an exercise at the end of the chapter
+
+
+
+
+
