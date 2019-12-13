@@ -35,7 +35,6 @@ class PredatoryCreditCard(CreditCard):
         self.monthly_charge_count = 0
         self.init_time = datetime.utcnow()
         self.MONTH_LENGTH = timedelta(0,4)
-
     def charge(self, price):
         elapsed_time = datetime.utcnow() - self.init_time
         if elapsed_time > self.MONTH_LENGTH:
@@ -47,13 +46,13 @@ class PredatoryCreditCard(CreditCard):
             self.balance+=1
         self.monthly_charge_count+=1
         return success
-
     def process_month(self):
         if self.balance >0:
             apr_factor = (1+self.apr)**(1/12)
             self.balance *= apr_factor
-    
-c0 = PredatoryCreditCard('Ammo','a_bank','1111',22000,22)
-for _ in range(100):
-s    c0.charge(100)
-    print(c0.get_balance())
+            
+if __name__ == '__main__':    
+    c0 = PredatoryCreditCard('Ammo','a_bank','1111',22000,22)
+    for _ in range(100):
+        c0.charge(100)
+        print(c0.get_balance())

@@ -329,6 +329,11 @@ class Polynomial(PolynomialTerm):
                 self._terms.insert(i, PolynomialTerm(0, order))
             i+=1
 
+if __name__ == '__main__':
+    p = Polynomial('23x3 - 45x4')
+    p = p**3 + p -2*p
+    print(p)
+
 
 
 
