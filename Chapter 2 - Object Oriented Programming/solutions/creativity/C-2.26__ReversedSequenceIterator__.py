@@ -2,7 +2,7 @@
 # ReversedSequenceIterator that serves as a reverse iterator for any Python sequence type. The ﬁrst call to next should 
 # return the last element of the sequence, the second call to next should return the second-to-last element, and so forth.
 
-class SequenceIterator:
+class ReversedSequenceIterator:
     def _init__(self, sequence):
         self._sequence = sequence
         self._k = len(sequence)

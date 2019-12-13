@@ -1,5 +1,5 @@
-#Implement the mul method for the Vector class of Section 2.3.3, so that the expression u v returns a scalar that 
-# represents the dot product of the vector
+#Exercise R-2.12 asks for an implementation of mul , for theVector class of Section 2.3.3, to provide support for the 
+# syntax v*3. Implement the rmul method, to provide additional support for syntax 3*v.
 
 class Vector:
     _cords = []
@@ -45,16 +45,11 @@ class Vector:
         for i in range(len(rv)):
             rv[i] = self[i] - other[i]
         return rv
-    def __mul__(self, other):
-        if type(self) == type(other):
-            rv = 0
-            for i in range(len(self)):
-                rv += self[i] * other[i]
-                return rv
+    def __mul__(self, factor):
         rv = Vector(len(self))
         for i in range(len(self)):
-            rv[i] = self[i] * other
-            return rv
+            rv[i] = self[i] * factor
+        return rv
     def __rmul__(self, factor):
         rv = Vector(len(self))
         for i in range(len(self)):
@@ -71,4 +66,4 @@ class Vector:
 v = Vector(5,3)
 v = -v
 w = 3*v
-print(w*v)
+print(w)

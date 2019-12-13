@@ -65,6 +65,7 @@ class Ecosystem:
         for creature in self.river:
             if creature and creature.id == id:
                 return creature
+
     def move_creature(self,creature):
         directions ={ 'right': 1, 'left': -1, 'stay': 0 }
         if creature is None:
@@ -95,7 +96,7 @@ class Ecosystem:
             print('{} moves from {} to {}'.format(creature,current_position, next_position))
             # e.g fish moves from 4 to 5
             return
-        # if there is a creature in planned direction and it is of same type with current creature
+        # if there is a creature in planned direction of motion and it is of same type with current creature
         elif type(creature) == type(other_creature) and type(creature) != type(None):
             # if same gender
             if creature.gender == other_creature.gender:
@@ -140,7 +141,7 @@ class Ecosystem:
                     print('{} and {} meet at {} to give birth to {} at {}'.format(father, mother, next_position, new_born, birth_position))
         # if creatures are not of the same type then one is a fish and other is a bear and this results in death of fish
         else:
-            # if current creature is a bear, its set to the eater
+            # if current creature is a bear, set it to the eater
             if type(creature) == type(Bear()):
                 eater = creature
                 food = other_creature

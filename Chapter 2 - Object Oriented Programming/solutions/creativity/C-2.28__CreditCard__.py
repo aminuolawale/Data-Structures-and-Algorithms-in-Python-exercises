@@ -55,6 +55,5 @@ class PredatoryCreditCard(CreditCard):
     
 c0 = PredatoryCreditCard('Ammo','a_bank','1111',22000,22)
 for _ in range(100):
-    slee
-    c0.charge(100)
+s    c0.charge(100)
     print(c0.get_balance())

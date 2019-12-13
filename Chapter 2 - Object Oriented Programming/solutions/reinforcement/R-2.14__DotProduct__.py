@@ -1,15 +1,11 @@
-#Exercise R-2.12 uses the mul method to support multiplying a Vector by a number, while Exercise R-2.14 uses the mul method to support computing a 
-# dot product of two vectors. Give a single implementation of Vector. mul thatusesrun-timetypechecking tosupportbothsyntaxes u vand u k,where u
-#  and v designate vector instances and k represents a number
+#Implement the mul method for the Vector class of Section 2.3.3, so that the expression u*v returns a scalar that 
+# represents the dot product of the vector
 
 class Vector:
     _cords = []
     
-    def __init__(self, n, j=0):
-        if type(n) == type([]):
-            self._cords = [element for element in n]
-        else:
-            self._cords = [j for _ in range(n)]
+    def __init__(self, n,j=0):
+        self._cords = [j for _ in range(n)]
     def __len__(self):
         return len(self._cords)
     def __eq__(self, other):
@@ -73,6 +69,6 @@ class Vector:
         return 'Vector->{}'.format(self._cords)
 
 v = Vector(5,3)
-v1 = Vector([1,2,3,4,1,3,3,2])
-print(v)
-print(v1)
+v = -v
+w = 3*v
+print(w*v)
